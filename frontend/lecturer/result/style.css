@@ -1,0 +1,38 @@
+/* GLOBAL */
+
+:root {
+  --color-pri: rgb(77, 77, 255);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: inherit;
+  font-family: "Roboto", sans-serif;
+}
+
+nav {
+  background-color: var(--color-pri);
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* LOCAL */

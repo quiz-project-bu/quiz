@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/frontend/lecturer/upload/style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <a href="/frontend/lecturer/">All questions</a>
+      <a href="/frontend/lecturer/upload/">Upload questions</a>
+      <a href="/frontend/lecturer/result/">Result</a>
+      <a href=""> Log out</a>
+    </nav>
+
+    <form id="form-data">
+      <input type="text" placeholder="Course Code" id="course-code" />
+      <input type="number" placeholder="How many questions" id="num" />
+
+      <button type="submit" id="data-btn">Next</button>
+    </form>
+
+    <!-- Questions -->
+    <form id="form-question">
+      <p id="counter"></p>
+      <textarea placeholder="Enter your question" id="ques">
+Your Question?</textarea
+      >
+      <input type="text" placeholder="Option A" id="opt-a" />
+      <input type="text" placeholder="Option B" id="opt-b" />
+      <input type="text" placeholder="Option C" id="opt-c" />
+      <input type="text" placeholder="Option D" id="opt-d" />
+      <input
+        type="text"
+        placeholder="Correct Option (A, B, C, D)"
+        id="opt-crt"
+      />
+      <button type="submit" id="que-btn">Next</button>
+    </form>
+
+    <script src="/frontend/lecturer/upload/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+/* GLOBAL */
+
+:root {
+  --color-pri: rgb(77, 77, 255);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: inherit;
+  font-family: "Roboto", sans-serif;
+}
+
+nav {
+  background-color: var(--color-pri);
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* LOCAL */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 10rem;
+  max-width: 75%;
+}
+
+textarea,
+select,
+input {
+  width: 25rem;
+  height: 3.7rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid black;
+  outline: none;
+}
+
+select:focus,
+input:focus {
+  border-color: var(--color-pri);
+}
+
+button {
+  width: 10rem;
+  height: 3rem;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--color-pri);
+  color: white;
+  border-radius: 0.5rem;
+  border: 0;
+}
+
+#options {
+  font-size: 1.3rem;
+  display: flex;
+  gap: 1rem;
+}
+
+#ques-quiz {
+  display: none;
+}
+
+#ques-quiz h2 {
+  margin-bottom: 1rem;
+}
+
+input[type="checkbox"] {
+  width: 1.7rem;
+  height: 1.7rem;
+}

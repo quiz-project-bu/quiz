@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/frontend/student/style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <a href="/frontend/student">Take Quiz</a>
+      <a href="/frontend/student/result/">Result</a>
+      <a href="">Log out</a>
+    </nav>
+
+    <form id="quiz-form">
+      <input type="text" placeholder="Couse Code" id="crs-code" />
+      <input
+        type="number"
+        placeholder="Num of Questions in the quiz"
+        id="ques-num"
+      />
+      <button type="submit" id="take-quiz">Take Quiz</button>
+    </form>
+
+    <form id="ques-quiz">
+      <p id="counter"></p>
+      <h2 id="question"></h2>
+      <div id="options">
+        <input type="checkbox" name="A" id="opt-chk-a" />
+        <p id="opt-txt-a">Option for A</p>
+      </div>
+
+      <div id="options">
+        <input type="checkbox" name="B" id="opt-chk-b" />
+        <p id="opt-txt-b">Option for B</p>
+      </div>
+
+      <div id="options">
+        <input type="checkbox" name="C" id="opt-chk-c" />
+        <p id="opt-txt-c">Option for C</p>
+      </div>
+
+      <div id="options">
+        <input type="checkbox" name="D" id="opt-chk-d" />
+        <p id="opt-txt-d">Option for D</p>
+      </div>
+
+      <button type="submit">Next</button>
+    </form>
+
+    <script src="/frontend/student/script.js"></script>
+  </body>
+</html>
