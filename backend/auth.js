@@ -22,7 +22,7 @@ AuthRouter.post("/signup", async function (req, res, next) {
   }
 });
 
-AuthRouter.post("/signin", async function (req, res) {
+AuthRouter.post("/signin", async function (req, res, next) {
   const reqBody = req.body;
   const { type, id, password } = reqBody;
 
