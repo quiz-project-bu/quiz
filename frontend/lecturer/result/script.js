@@ -1,6 +1,6 @@
 const type = localStorage.getItem("type");
 
-if (type.toLowerCase() != "lecturer") {
+if (!type || type.toLowerCase() != "lecturer") {
   window.location = "/";
 }
 

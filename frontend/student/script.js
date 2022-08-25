@@ -24,7 +24,7 @@ let score = 0;
 const studentID = localStorage.getItem("id") || "";
 const type = localStorage.getItem("type");
 
-if (type.toLowerCase() != "student") {
+if (!type || type.toLowerCase() != "student") {
   window.location = "/";
 }
 
