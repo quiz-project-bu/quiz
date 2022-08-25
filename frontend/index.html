@@ -30,9 +30,15 @@
     </form>
 
     <script>
+      if (localStorage.getItem("id")) {
+        const acctType = localStorage.getItem("type");
+        window.location = `${window.location.href}/${acctType}`;
+      }
+
       var id = document.getElementById("id");
       var password = document.getElementById("password");
       var type = document.getElementById("typeSel");
+      var userType;
 
       async function performAuth(url) {
         var idVal = id.value;
@@ -54,6 +60,7 @@
         });
 
         const decodedRe = await res.json();
+        userType = decodedRe.type || "";
         return decodedRe.message;
       }
 
@@ -74,18 +81,17 @@
         }
 
         localStorage.setItem("id", r);
+        localStorage.setItem("type", userType);
 
         if (type.value === "lecturer") {
-          window.location.href = "http://127.0.0.1:5555/frontend/lecturer";
+          window.location.href = "/frontend/lecturer";
           return;
         }
 
         if (type.value === "student") {
-          window.location.href = "http://127.0.0.1:5555/frontend/student";
+          window.location.href = "/frontend/student";
           return;
         }
-
-        // alert(type.)
       }
     </script>
   </body>

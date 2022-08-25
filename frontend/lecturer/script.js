@@ -1,4 +1,9 @@
 const userId = localStorage.getItem("id");
+const type = localStorage.getItem("type");
+
+if (type.toLowerCase() != "lecturer") {
+  window.location = "/";
+}
 
 if (!userId) {
   alert("User not found");
@@ -33,10 +38,15 @@ function displayResult(result) {
 
   console.log(result);
 
-  result.map(function ({ courseCode, _, question }) {
+  result.map(function ({ courseCode, courseTitle, _, question }) {
     const toInsertEl = `
       <div id="course-box">
         <p>${courseCode}</p><div id="divider"></div>
+        <p>${
+          courseTitle.length < 10
+            ? courseTitle
+            : `${courseTitle.substring(0, 9)}...`
+        }</p><div id="divider"></div>
         <p>Questions: ${question.length}</p>
       </div>
     `;
@@ -46,5 +56,5 @@ function displayResult(result) {
 }
 
 function gotoSigninPage() {
-  window.location.href = "http://127.0.0.1:5555/frontend/";
+  window.location.href = "/frontend/";
 }

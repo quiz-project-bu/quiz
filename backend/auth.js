@@ -39,7 +39,7 @@ AuthRouter.post("/signin", async function (req, res) {
       return;
     }
 
-    res.status(200).json({ message: re._id.toString() });
+    res.status(200).json({ message: re._id.toString(), type: re.type });
   } catch (e) {
     console.log("ERROR: ", e.message);
     next(new Error());

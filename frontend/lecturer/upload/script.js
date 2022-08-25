@@ -1,3 +1,9 @@
+const type = localStorage.getItem("type");
+
+if (type.toLowerCase() != "lecturer") {
+  window.location = "/";
+}
+
 const queList = [];
 
 class Question {
@@ -13,6 +19,7 @@ class Question {
 
 const formDtEL = document.getElementById("form-data");
 const cCEl = document.getElementById("course-code");
+const cTEl = document.getElementById("course-title");
 const numEL = document.getElementById("num");
 const dataEL = document.getElementById("data-btn");
 
@@ -28,16 +35,17 @@ const queBtnEl = document.getElementById("que-btn");
 
 let counterCurrVal = 0;
 
-let cCval;
+let cCval, cTval;
 let numVal;
 
 formDtEL.addEventListener("submit", function (e) {
   e.preventDefault();
 
   cCval = cCEl.value;
+  cTval = cTEl.value;
   numVal = +numEL.value;
 
-  if (!cCval || !numVal) {
+  if (!cCval || !numVal || !cCval) {
     alert("Invalid information entered");
     return;
   }
@@ -127,6 +135,7 @@ async function submitQue() {
     },
     body: JSON.stringify({
       courseCode: cCval,
+      courseTitle: cTval,
       ownerId: userId,
       question: queList,
     }),
@@ -138,14 +147,12 @@ async function submitQue() {
     gotoAllQuePage();
     return;
   }
-
-  alert("An unexpected error occurred");
 }
 
 function gotoAllQuePage() {
-  window.location.href = "http://127.0.0.1:5555/frontend/lecturer";
+  window.location.href = "/frontend/lecturer";
 }
 
 function gotoSigninPage() {
-  window.location.href = "http://127.0.0.1:5555/frontend/";
+  window.location.href = "/frontend/";
 }

@@ -1,6 +1,5 @@
 const quizFormEl = document.getElementById("quiz-form");
 const courseCdEl = document.getElementById("crs-code");
-const quesNumEl = document.getElementById("ques-num");
 
 const questionFormEl = document.getElementById("ques-quiz");
 const counterEl = document.getElementById("counter");
@@ -14,21 +13,26 @@ const optionChkB = document.getElementById("opt-chk-b");
 const optionChkC = document.getElementById("opt-chk-c");
 const optionChkD = document.getElementById("opt-chk-d");
 
-let questions;
+let questions, lecturerID;
 
 let courseCdVal;
-let quesNumVal;
 
 let counterNum = 0;
 
 let score = 0;
 
+const studentID = localStorage.getItem("id") || "";
+const type = localStorage.getItem("type");
+
+if (type.toLowerCase() != "student") {
+  window.location = "/";
+}
+
 quizFormEl.addEventListener("submit", async function (e) {
   e.preventDefault();
   courseCdVal = courseCdEl.value;
-  quesNumVal = +quesNumEl.value;
 
-  if (!courseCdVal || !quesNumVal) {
+  if (!courseCdVal) {
     alert("Invalid input entered");
     return;
   }
@@ -52,7 +56,7 @@ quizFormEl.addEventListener("submit", async function (e) {
 
   if (!(decodedRes.question < 1)) {
     questions = decodedRes.question;
-    console.log(questions);
+    lecturerID = decodedRes.ownerId;
     startQuiz();
     return;
   }
@@ -68,7 +72,6 @@ questionFormEl.addEventListener("submit", function (e) {
     optionChkA.checked === true
   ) {
     score++;
-    optionChkA.checked === false;
   }
 
   if (
@@ -76,7 +79,6 @@ questionFormEl.addEventListener("submit", function (e) {
     optionChkB.checked === true
   ) {
     score++;
-    optionChkB.checked === false;
   }
 
   if (
@@ -84,7 +86,6 @@ questionFormEl.addEventListener("submit", function (e) {
     optionChkC.checked === true
   ) {
     score++;
-    optionChkC.checked === false;
   }
 
   if (
@@ -92,7 +93,6 @@ questionFormEl.addEventListener("submit", function (e) {
     optionChkD.checked === true
   ) {
     score++;
-    optionChkD.checked === false;
   }
 
   showQuestion(++counterNum);
@@ -107,13 +107,43 @@ function startQuiz() {
 
 function showQuestion(numToShow) {
   if (numToShow > questions.length) {
+    saveResultToDB();
     alert(`You scored ${score}/${questions.length}`);
-    window.location = "http://127.0.0.1:5555/frontend/student";
+    window.location = "/frontend/student";
+    return;
   }
+
+  optionChkA.checked = false;
+  optionChkB.checked = false;
+  optionChkC.checked = false;
+  optionChkD.checked = false;
+
+  counterEl.textContent = `${numToShow}/${questions.length}`;
 
   questionEl.textContent = questions[numToShow - 1].question;
   optionTxtA.textContent = questions[numToShow - 1].optionA;
   optionTxtB.textContent = questions[numToShow - 1].optionB;
   optionTxtC.textContent = questions[numToShow - 1].optionC;
   optionTxtD.textContent = questions[numToShow - 1].optionD;
+}
+
+async function saveResultToDB() {
+  const res = await fetch("http://127.0.0.1:3000/question/save-result", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      courseCode: courseCdVal,
+      score: score,
+      studentID: studentID,
+      lecturerID: lecturerID,
+    }),
+  });
+
+  const decodedRes = await res.json();
+  if (decodedRes.message) {
+    alert(decodedRes.message);
+    return;
+  }
 }
