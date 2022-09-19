@@ -37,6 +37,7 @@ quizFormEl.addEventListener("submit", async function (e) {
     return;
   }
 
+  // TODO:
   const res = await fetch("http://127.0.0.1:3000/question/get-one", {
     method: "POST",
     headers: {
@@ -128,6 +129,7 @@ function showQuestion(numToShow) {
 }
 
 async function saveResultToDB() {
+  // TODO:
   const res = await fetch("http://127.0.0.1:3000/question/save-result", {
     method: "POST",
     headers: {

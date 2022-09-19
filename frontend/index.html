@@ -66,12 +66,12 @@
 
       async function signup(e) {
         e.preventDefault();
-        alert(await performAuth("http://127.0.0.1:3000/auth/signup"));
+        alert(await performAuth("http://127.0.0.1:3000/auth/signup")); // TODO:
       }
 
       async function signin(e) {
         e.preventDefault();
-        const r = await performAuth("http://127.0.0.1:3000/auth/signin");
+        const r = await performAuth("http://127.0.0.1:3000/auth/signin"); // TODO:
 
         if (!r) return;
 
