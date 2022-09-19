@@ -1,2 +1,3 @@
 /backend/node_modules
-/backend/db.js
+# /backend/db.js
+**/*.env

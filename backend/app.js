@@ -3,6 +3,8 @@ const AuthRouter = require("./auth");
 const { getDB } = require("./db");
 const QuestionRouter = require("./question");
 
+const _ = require("dotenv").config();
+
 const app = express();
 
 app.use(express.json());
